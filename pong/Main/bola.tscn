@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcyosdnu5cv1w"]
+
+[ext_resource type="Script" uid="uid://de0w52qlu8bbj" path="res://main/Bola.gd" id="1_afutf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5aq4k"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wdsen"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tvjg7"]
+radius = 0.521285
+
+[node name="Bola" type="CharacterBody3D"]
+script = ExtResource("1_afutf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_5aq4k")
+mesh = SubResource("SphereMesh_wdsen")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_tvjg7")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 0, 0, 0)

@@ -1,3 +1,117 @@
-[gd_scene format=3 uid="uid://da7oarr385lyn"]
+[gd_scene load_steps=13 format=3 uid="uid://ctew85ks7jqvy"]
 
-[node name="Node3D" type="Node3D"]
+[ext_resource type="Script" uid="uid://cmb15ms52ynot" path="res://main/jogo.gd" id="1_4l1yy"]
+[ext_resource type="PackedScene" uid="uid://cg3irqafosthe" path="res://main/Player/player.tscn" id="1_tqvcs"]
+[ext_resource type="PackedScene" uid="uid://bcyosdnu5cv1w" path="res://main/bola.tscn" id="2_j41a5"]
+[ext_resource type="Script" uid="uid://bamjfhed3payp" path="res://main/TelaDoJogo.gd" id="4_5aq4k"]
+[ext_resource type="LabelSettings" uid="uid://dijxsi7my57mk" path="res://main/FonteTela.tres" id="5_wdsen"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a2tk"]
+albedo_color = Color(0.0295066, 0.0295066, 0.0295066, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqvcs"]
+material = SubResource("StandardMaterial3D_4a2tk")
+size = Vector3(50, 1, 25)
+
+[sub_resource type="Environment" id="Environment_4a2tk"]
+ambient_light_energy = 8.05
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqvcs"]
+size = Vector3(49.9443, 3.04681, 0.969238)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j41a5"]
+size = Vector3(50.1908, 3.047, 0.969)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4l1yy"]
+size = Vector3(1.295, 1.455, 25.04)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etuki"]
+size = Vector3(1.295, 1.455, 25.04)
+
+[node name="jogo" type="Node3D" node_paths=PackedStringArray("bola", "marcador")]
+script = ExtResource("1_4l1yy")
+bola = NodePath("Bola")
+marcador = NodePath("PosicaoInicial")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0264311, -0.310196, 0)
+mesh = SubResource("BoxMesh_tqvcs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.19283, 0.981232, 0, -0.981232, 0.19283, 0, 18.8291, 4.94356)
+fov = 89.3613
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00785398, 0.999969, 0, -0.999969, -0.00785398, 0, 19.9044, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4a2tk")
+
+[node name="Player" parent="." instance=ExtResource("1_tqvcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4585, 0.893225, 0)
+
+[node name="Paredes" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Paredes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015, 0.804594, 12.8945)
+shape = SubResource("BoxShape3D_tqvcs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Paredes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052, 1.144, -12.888)
+shape = SubResource("BoxShape3D_j41a5")
+
+[node name="GolPlayer1" type="Area3D" parent="."]
+
+[node name="GolEsquerdo" type="CollisionShape3D" parent="GolPlayer1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.578, 0, 0)
+shape = SubResource("BoxShape3D_4l1yy")
+
+[node name="GolPlayer2" type="Area3D" parent="."]
+
+[node name="GolDireito" type="CollisionShape3D" parent="GolPlayer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.521, 0.0213604, 0.0439768)
+shape = SubResource("BoxShape3D_etuki")
+
+[node name="Bola" parent="." instance=ExtResource("2_j41a5")]
+initial_speed = null
+fator_de_aumento_da_velocidade = null
+fator_de_diminuir_a_velocidade = null
+velocidade_maxima = null
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_5aq4k")
+
+[node name="Control" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("4_5aq4k")
+
+[node name="Player1" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0"
+label_settings = ExtResource("5_wdsen")
+
+[node name="Player2" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "0"
+label_settings = ExtResource("5_wdsen")
+
+[node name="Vencedor" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 2
+label_settings = ExtResource("5_wdsen")
+horizontal_alignment = 1
+
+[node name="PosicaoInicial" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03554, 0)
+
+[connection signal="body_entered" from="GolPlayer1" to="." method="_on_gol_player_1_body_entered"]
+[connection signal="body_entered" from="GolPlayer1" to="CanvasLayer" method="_on_gol_player_1_body_entered"]
+[connection signal="body_entered" from="GolPlayer2" to="." method="_on_gol_player_2_body_entered"]
