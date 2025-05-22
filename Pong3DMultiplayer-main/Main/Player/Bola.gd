@@ -35,6 +35,8 @@ func _physics_process(delta):
 		movement = direction * speed * delta
 		move_and_collide(movement)
 	
+	girar_com_o_movimento(movement)
+	
 func resetar(position: Vector3, para_a_direita: bool) -> void:
 	self.global_position = position
 	speed = initial_speed
@@ -65,3 +67,12 @@ func diminuir_velocidade() -> void:
 	
 func aumentar_velocidade() -> void:
 	speed = min(speed + (speed * fator_de_aumento_da_velocidade),velocidade_maxima)
+
+func girar_com_o_movimento(movement: Vector3) -> void:
+	if movement.length() < 0.01:
+		return
+	
+	var direction_normalized = movement.normalized()
+	var eixo_rotacao = direction_normalized.cross(Vector3.UP).normalized()
+	var angulo = movement.length() / 1.5  # Ajuste esse divisor para controlar a rotação
+	rotate(eixo_rotacao, angulo)

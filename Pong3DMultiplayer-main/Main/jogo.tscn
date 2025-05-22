@@ -1,8 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://dfgj0lwfe2elm"]
+[gd_scene load_steps=88 format=3 uid="uid://dfgj0lwfe2elm"]
 
 [ext_resource type="Script" uid="uid://cjk678ialsi3u" path="res://Main/jogo.gd" id="1_pukle"]
 [ext_resource type="PackedScene" uid="uid://ckxjoth8tom2t" path="res://Main/Player/player.tscn" id="1_wq4xo"]
+[ext_resource type="Texture2D" uid="uid://c1bdar70tt535" path="res://Material/Grass005_1k/Grass005_1K-JPG_Color.jpg" id="2_3f0pa"]
 [ext_resource type="PackedScene" uid="uid://bkls4hu3uydv" path="res://Main/Player/Bola.tscn" id="2_h4ylc"]
+[ext_resource type="Texture2D" uid="uid://de13y7v314olv" path="res://Material/Grass005_1k/Grass005_1K-JPG_AmbientOcclusion.jpg" id="3_0sxu0"]
+[ext_resource type="Texture2D" uid="uid://doid37sespy74" path="res://Material/Grass005_1k/Grass005_1K-JPG_NormalDX.jpg" id="4_0sxu0"]
 [ext_resource type="LabelSettings" uid="uid://bf2y2qmvfkjj3" path="res://Main/FonteTela.tres" id="4_g3kj7"]
 [ext_resource type="Script" uid="uid://cicnh1vufhhwc" path="res://Main/TelaDoJogo.gd" id="4_kxv83"]
 [ext_resource type="Script" uid="uid://bhux87js37v4m" path="res://Main/Telas.gd" id="6_4wghm"]
@@ -12,7 +15,10 @@
 [ext_resource type="Script" uid="uid://bu21wfs2dpipv" path="res://Main/TelaDeSom.gd" id="9_w7r42"]
 [ext_resource type="AudioStream" uid="uid://bn8spi8ri1jde" path="res://resources/music/Juhani Junkala [Retro Game Music Pack] Level 1.wav" id="10_6ah3i"]
 [ext_resource type="AudioStream" uid="uid://tgncc3nsayge" path="res://resources/music/Juhani Junkala [Retro Game Music Pack] Level 2.wav" id="11_7383g"]
+[ext_resource type="FontFile" uid="uid://ca5d5knn2wdk1" path="res://Fonts/soccer_league/SoccerLeague-Italic.ttf" id="11_ujbn8"]
+[ext_resource type="FontFile" uid="uid://b1avdscshybtt" path="res://Fonts/soccer_league/SoccerLeague.ttf" id="12_2n1wh"]
 [ext_resource type="AudioStream" uid="uid://csu1jn5wccj3i" path="res://resources/music/Juhani Junkala [Retro Game Music Pack] Level 3.wav" id="12_gcm76"]
+[ext_resource type="FontFile" uid="uid://c68bckykim1wm" path="res://Fonts/soccer_league/SoccerLeagueCollege-Italic.ttf" id="13_ujbn8"]
 [ext_resource type="Script" uid="uid://buytlrq5gw16d" path="res://Main/SFXPlayer.gd" id="14_lkfnq"]
 [ext_resource type="AudioStream" uid="uid://cx4e86h3xbiia" path="res://resources/sfx/go_back.wav" id="15_th7x0"]
 [ext_resource type="AudioStream" uid="uid://x44wuuny1eqd" path="res://resources/sfx/hit.wav" id="16_ymudj"]
@@ -21,12 +27,54 @@
 [ext_resource type="AudioStream" uid="uid://cc8jb8qk7o2gj" path="res://resources/sfx/winner.wav" id="19_nfqqw"]
 [ext_resource type="Script" uid="uid://jc8nlppbdsok" path="res://Main/microphone.gd" id="21_xuija"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtt2e"]
-albedo_color = Color(0, 0.529569, 0.118282, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3f0pa"]
+albedo_color = Color(0, 0.501961, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_86yq1"]
+material = SubResource("StandardMaterial3D_3f0pa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0r2wy"]
+albedo_color = Color(0, 0.768935, 0, 1)
+albedo_texture = ExtResource("2_3f0pa")
+roughness = 0.0
+normal_enabled = true
+normal_scale = -0.41
+normal_texture = ExtResource("4_0sxu0")
+ao_enabled = true
+ao_texture = ExtResource("3_0sxu0")
+ao_texture_channel = 1
+uv1_scale = Vector3(5, 5, 1)
+texture_filter = 1
+grow_amount = -5.978
 
 [sub_resource type="BoxMesh" id="BoxMesh_keton"]
-material = SubResource("StandardMaterial3D_wtt2e")
+material = SubResource("StandardMaterial3D_0r2wy")
 size = Vector3(50, 1, 25)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3f0pa"]
+top_radius = 1.49
+height = 0.001
+
+[sub_resource type="BoxMesh" id="BoxMesh_yigvo"]
+size = Vector3(0.485, 1, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_86yq1"]
+size = Vector3(7.06, 1, 0.615)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3f0pa"]
+size = Vector3(7.06, 1, 0.615)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0sxu0"]
+size = Vector3(0.615, 1, 16.165)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0r2wy"]
+size = Vector3(7.06, 1, 0.615)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ujbn8"]
+size = Vector3(7.06, 1, 0.615)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2n1wh"]
+size = Vector3(0.615, 1, 16.165)
 
 [sub_resource type="Sky" id="Sky_arn6k"]
 
@@ -50,19 +98,204 @@ font_size = 102
 font_size = 102
 
 [sub_resource type="LabelSettings" id="LabelSettings_d2w5k"]
+font = ExtResource("11_ujbn8")
 font_size = 110
+font_color = Color(1, 0.913725, 0, 1)
+outline_size = 20
+outline_color = Color(0.509018, 0.50214, 7.70092e-07, 1)
+shadow_size = 43
+shadow_color = Color(0.862745, 0.858824, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6sof"]
+bg_color = Color(0.962123, 0.904164, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.682712, 0.599646, 0, 1)
+border_blend = true
+shadow_color = Color(1, 0.913725, 0.196078, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujbn8"]
+bg_color = Color(1, 0.913725, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n1wh"]
+bg_color = Color(1, 0.913725, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euai0"]
+bg_color = Color(1, 0.937255, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.873019, 0.795829, 0, 1)
+border_blend = true
+shadow_color = Color(1, 0.913725, 0.0823529, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph6p4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0dro"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r2wy"]
+bg_color = Color(0.960784, 0.905882, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.682353, 0.6, 0, 1)
+shadow_color = Color(1, 0.913725, 0.196078, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1vj1"]
+bg_color = Color(1, 0.913725, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jwb7"]
+bg_color = Color(1, 0.913725, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e8a2"]
+bg_color = Color(1, 0.937255, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+shadow_color = Color(1, 0.913725, 0.0823529, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm43k"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibo12"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.682353, 0.6, 0, 1)
+border_blend = true
+shadow_color = Color(1, 0.913725, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll3em"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+shadow_color = Color(0.87451, 0.796078, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqeyi"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yesrx"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6octw"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yniwr"]
+bg_color = Color(1, 0.913725, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.87451, 0.796078, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2dkt"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03i5m"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfqlp"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p617y"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjnhn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_ohm7h"]
+font = ExtResource("12_2n1wh")
 font_size = 36
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33w6t"]
+bg_color = Color(0, 0.501961, 0, 1)
+shadow_color = Color(0, 0.501961, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhuxc"]
+bg_color = Color(0, 0.423529, 0, 1)
+shadow_color = Color(0, 0.501961, 0, 1)
+shadow_size = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w1r1"]
-bg_color = Color(0.296546, 0.651029, 0.775134, 1)
+bg_color = Color(0, 0.501961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1vvc"]
+bg_color = Color(0.839216, 0.764706, 0, 1)
+shadow_color = Color(1, 0.913725, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8271"]
+bg_color = Color(1, 0.992157, 0, 1)
+shadow_color = Color(1, 0.913725, 0, 1)
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eotil"]
-bg_color = Color(0.658824, 0.694118, 0.87451, 1)
+bg_color = Color(1, 0.913725, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3x55"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui4oi"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq7ah"]
+draw_center = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6y4p"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f0pa"]
 bg_color = Color(0.85098, 0.478431, 0.796078, 0.435294)
@@ -74,6 +307,24 @@ expand_margin_left = 15.0
 expand_margin_top = 15.0
 expand_margin_right = 15.0
 expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1h7q"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gf3l"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p67cu"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hmsr"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr6bq"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8ii0"]
+draw_center = false
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_wfxi0"]
 mix_rate = 48000.0
@@ -89,12 +340,52 @@ gol_player1 = NodePath("GolPlayer1")
 gol_player2 = NodePath("GolPlayer2")
 spawner_de_poder = NodePath("AreaSpawnPoderes")
 
+[node name="Fundo" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fundo"]
+transform = Transform3D(144.89, 0, 0, 0, 1, 0, 0, 0, 89.815, 0, -9.82, 0)
+mesh = SubResource("PlaneMesh_86yq1")
+
 [node name="PlanoDeFundo" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.63221, 0)
 mesh = SubResource("BoxMesh_keton")
 
+[node name="MeioCampo" type="MeshInstance3D" parent="PlanoDeFundo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501, 0)
+mesh = SubResource("CylinderMesh_3f0pa")
+
+[node name="LinhaMeio" type="MeshInstance3D" parent="PlanoDeFundo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+mesh = SubResource("BoxMesh_yigvo")
+
+[node name="LinhaGolDireito" type="MeshInstance3D" parent="PlanoDeFundo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.474, 0.001, -7.906)
+mesh = SubResource("BoxMesh_86yq1")
+
+[node name="LinhaGolEsquerdo" type="MeshInstance3D" parent="PlanoDeFundo/LinhaGolDireito"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 0, 15.605)
+mesh = SubResource("BoxMesh_3f0pa")
+skeleton = NodePath("../..")
+
+[node name="LinhaMaior" type="MeshInstance3D" parent="PlanoDeFundo/LinhaGolDireito"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.216, 0, 7.805)
+mesh = SubResource("BoxMesh_0sxu0")
+skeleton = NodePath("../..")
+
+[node name="LinhaGolEsquerdo2" type="MeshInstance3D" parent="PlanoDeFundo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.49, 0.001, 7.7)
+mesh = SubResource("BoxMesh_0r2wy")
+
+[node name="LinhaGolDireito2" type="MeshInstance3D" parent="PlanoDeFundo/LinhaGolEsquerdo2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100002, 0, -15.601)
+mesh = SubResource("BoxMesh_ujbn8")
+
+[node name="LinhaGolMeio" type="MeshInstance3D" parent="PlanoDeFundo/LinhaGolEsquerdo2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.226, 0, -7.804)
+mesh = SubResource("BoxMesh_2n1wh")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.604599, 0.79653, 0, -0.79653, 0.604599, 0, 18, 18)
+transform = Transform3D(1, 0, 0, 0, 0.583541, 0.812084, 0, -0.812084, 0.583541, 0, 17.505, 18.324)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y2ic7")
@@ -243,7 +534,6 @@ theme_override_font_sizes/font_size = 28
 text = "Sair"
 
 [node name="Principal" type="MarginContainer" parent="Telas"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -254,58 +544,114 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Telas/Principal"]
+[node name="VBoxContainerTitle" type="VBoxContainer" parent="Telas/Principal"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="Label" type="Label" parent="Telas/Principal/VBoxContainer"]
+[node name="Label" type="Label" parent="Telas/Principal/VBoxContainerTitle"]
+texture_filter = 2
 layout_mode = 2
-text = "PONG"
+text = "Power PONG"
 label_settings = SubResource("LabelSettings_d2w5k")
 horizontal_alignment = 1
 
-[node name="Local" type="Button" parent="Telas/Principal/VBoxContainer"]
+[node name="VBoxContainerOpcoes" type="VBoxContainer" parent="Telas/Principal"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Local" type="Button" parent="Telas/Principal/VBoxContainerOpcoes"]
+texture_filter = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.501961, 0, 1)
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_p6sof")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_ujbn8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2n1wh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_euai0")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ph6p4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_b0dro")
 text = "Local"
 
-[node name="Multiplayer" type="Button" parent="Telas/Principal/VBoxContainer"]
+[node name="Multiplayer" type="Button" parent="Telas/Principal/VBoxContainerOpcoes"]
+texture_filter = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.501961, 0, 1)
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_0r2wy")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_h1vj1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5jwb7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3e8a2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dm43k")
 text = "Multiplayer"
 
-[node name="Quit" type="Button" parent="Telas/Principal/VBoxContainer"]
+[node name="Quit" type="Button" parent="Telas/Principal/VBoxContainerOpcoes"]
+texture_filter = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.501961, 0, 1)
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_ibo12")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ll3em")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_gqeyi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yesrx")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_6octw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yniwr")
 text = "Sair"
 
 [node name="Criador" type="VBoxContainer" parent="Telas/Principal"]
+texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="CriadorBotao" type="Button" parent="Telas/Principal/Criador"]
+texture_filter = 2
 layout_mode = 2
-text = "Sistemas Distribuídos
-Profº Guilherme Apolinário"
+theme_override_colors/font_hover_color = Color(0.963999, 0.948726, 0, 1)
+theme_override_fonts/font = ExtResource("11_ujbn8")
+text = "Sistemas Distribuidos
+GitHub 🔗"
 flat = true
-alignment = 0
 
 [node name="TextureRect" type="TextureRect" parent="Telas/Principal/Criador"]
+texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="Telas/Principal"]
+texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("11_ujbn8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v2dkt")
 text = "V1.1"
 
 [node name="Login" type="MarginContainer" parent="Telas" node_paths=PackedStringArray("ip", "port", "nickname")]
@@ -322,10 +668,21 @@ port = NodePath("VBoxContainer/ServerInfoField/Port")
 nickname = NodePath("VBoxContainer/NicknameField/Nickname")
 
 [node name="Back" type="Button" parent="Telas/Login"]
+texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_hover_pressed_color = Color(0.937255, 0.854902, 0, 1)
+theme_override_colors/font_hover_color = Color(0.937255, 0.854902, 0, 1)
+theme_override_colors/font_color = Color(1, 0.913725, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.913725, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.913725, 0, 1)
+theme_override_fonts/font = ExtResource("13_ujbn8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_03i5m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pfqlp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p617y")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mjnhn")
 text = "Voltar"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Telas/Login"]
@@ -339,15 +696,18 @@ layout_mode = 2
 theme_override_constants/separation = 25
 
 [node name="NicknameLabel" type="Label" parent="Telas/Login/VBoxContainer/NicknameField"]
+texture_filter = 2
 layout_mode = 2
 text = "Nickname:"
 label_settings = SubResource("LabelSettings_ohm7h")
 horizontal_alignment = 1
 
 [node name="Nickname" type="TextEdit" parent="Telas/Login/VBoxContainer/NicknameField"]
+texture_filter = 2
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Digite seu nome"
 scroll_fit_content_height = true
@@ -357,29 +717,35 @@ layout_mode = 2
 theme_override_constants/separation = 25
 
 [node name="IpLabel" type="Label" parent="Telas/Login/VBoxContainer/ServerInfoField"]
+texture_filter = 2
 layout_mode = 2
 text = "IP:"
 label_settings = SubResource("LabelSettings_ohm7h")
 horizontal_alignment = 1
 
 [node name="Ip" type="TextEdit" parent="Telas/Login/VBoxContainer/ServerInfoField"]
+texture_filter = 2
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
 text = "localhost"
 scroll_fit_content_height = true
 
 [node name="PortLabel" type="Label" parent="Telas/Login/VBoxContainer/ServerInfoField"]
+texture_filter = 2
 layout_mode = 2
 text = "Porta:"
 label_settings = SubResource("LabelSettings_ohm7h")
 horizontal_alignment = 1
 
 [node name="Port" type="TextEdit" parent="Telas/Login/VBoxContainer/ServerInfoField"]
+texture_filter = 2
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
 text = "5000"
 scroll_fit_content_height = true
@@ -390,18 +756,36 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 25
 
 [node name="CriarServer" type="Button" parent="Telas/Login/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(250, 0)
+texture_filter = 2
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_hover_pressed_color = Color(0.937255, 0.854902, 0, 1)
+theme_override_colors/font_hover_color = Color(0.937255, 0.854902, 0, 1)
+theme_override_colors/font_color = Color(1, 0.913725, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.913725, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.913725, 0, 1)
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_33w6t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xhuxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2w1r1")
 text = "Criar Server"
 
 [node name="Logar" type="Button" parent="Telas/Login/VBoxContainer/Buttons"]
+texture_filter = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_hover_pressed_color = Color(0, 0.476484, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0, 1)
+theme_override_colors/font_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.501961, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.501961, 0, 1)
+theme_override_fonts/font = ExtResource("11_ujbn8")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_v1vvc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x8271")
 theme_override_styles/normal = SubResource("StyleBoxFlat_eotil")
 text = "Logar"
 
@@ -420,28 +804,56 @@ script = ExtResource("9_w7r42")
 tela_som = NodePath("MarginContainer")
 
 [node name="AbrirSom" type="Button" parent="Telas/Som"]
+texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.937255, 0.854902, 0, 1)
+theme_override_colors/font_hover_color = Color(0.938018, 0.856813, 7.70092e-07, 1)
+theme_override_colors/font_color = Color(1, 0.913725, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.913725, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.913725, 0, 1)
+theme_override_fonts/font = ExtResource("13_ujbn8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_p3x55")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ui4oi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dq7ah")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s6y4p")
 text = "Som"
 
 [node name="MarginContainer" type="PanelContainer" parent="Telas/Som"]
-visible = false
+self_modulate = Color(0, 0.419608, 0.258824, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3f0pa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Telas/Som/MarginContainer"]
+texture_filter = 2
 layout_mode = 2
 
 [node name="SairBotao" type="Button" parent="Telas/Som/MarginContainer/VBoxContainer"]
+texture_filter = 2
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
+theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.698039, 0, 1)
+theme_override_colors/font_hover_color = Color(0.765582, 0.698477, 1.92523e-06, 1)
+theme_override_colors/font_color = Color(1, 0.913725, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.913725, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.764706, 0.698039, 0, 1)
+theme_override_fonts/font = ExtResource("11_ujbn8")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_r1h7q")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_4gf3l")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_p67cu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hmsr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rr6bq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8ii0")
 text = "Fechar"
 
 [node name="MusicaLabel" type="Label" parent="Telas/Som/MarginContainer/VBoxContainer"]
+texture_filter = 2
 layout_mode = 2
+theme_override_fonts/font = ExtResource("12_2n1wh")
+theme_override_font_sizes/font_size = 15
 text = "Musica:"
 
 [node name="MusicaSlider" type="HSlider" parent="Telas/Som/MarginContainer/VBoxContainer"]
@@ -449,7 +861,9 @@ layout_mode = 2
 max_value = 8.0
 
 [node name="SFXLabel" type="Label" parent="Telas/Som/MarginContainer/VBoxContainer"]
+texture_filter = 2
 layout_mode = 2
+theme_override_fonts/font = ExtResource("12_2n1wh")
 text = "Efeitos sonoros:"
 
 [node name="SFXSlider" type="HSlider" parent="Telas/Som/MarginContainer/VBoxContainer"]
@@ -457,7 +871,9 @@ layout_mode = 2
 max_value = 8.0
 
 [node name="PlayerVoiceLabel" type="Label" parent="Telas/Som/MarginContainer/VBoxContainer"]
+texture_filter = 2
 layout_mode = 2
+theme_override_fonts/font = ExtResource("12_2n1wh")
 text = "Chat de voz:"
 
 [node name="PlayerVoice" type="HSlider" parent="Telas/Som/MarginContainer/VBoxContainer"]
@@ -501,9 +917,9 @@ bus = &"VoiceChat"
 [connection signal="body_entered" from="GolPlayer2" to="Telas/Placar" method="_on_gol_player_2_body_entered"]
 [connection signal="pressed" from="Telas/Placar/PosPartida/HBoxContainer/Revanche" to="Telas" method="_on_revanche_pressed"]
 [connection signal="pressed" from="Telas/Placar/PosPartida/HBoxContainer/Sair" to="Telas" method="_on_sair_pressed"]
-[connection signal="pressed" from="Telas/Principal/VBoxContainer/Local" to="Telas" method="_on_local_pressed"]
-[connection signal="pressed" from="Telas/Principal/VBoxContainer/Multiplayer" to="Telas" method="_on_multiplayer_pressed"]
-[connection signal="pressed" from="Telas/Principal/VBoxContainer/Quit" to="Telas" method="_on_quit_pressed"]
+[connection signal="pressed" from="Telas/Principal/VBoxContainerOpcoes/Local" to="Telas" method="_on_local_pressed"]
+[connection signal="pressed" from="Telas/Principal/VBoxContainerOpcoes/Multiplayer" to="Telas" method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="Telas/Principal/VBoxContainerOpcoes/Quit" to="Telas" method="_on_quit_pressed"]
 [connection signal="pressed" from="Telas/Principal/Criador/CriadorBotao" to="Telas" method="_on_criador_botao_pressed"]
 [connection signal="criar_server" from="Telas/Login" to="Telas" method="_on_login_criar_server"]
 [connection signal="logar" from="Telas/Login" to="Telas" method="_on_login_logar"]

@@ -175,4 +175,4 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_criador_botao_pressed():
-	OS.shell_open("https://www.instagram.com/guus_xavi22/")
+	OS.shell_open("https://github.com/devGuus/Pong3D")

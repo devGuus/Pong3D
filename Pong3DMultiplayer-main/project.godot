@@ -13,12 +13,16 @@ config_version=5
 config/name="Pong3D"
 run/main_scene="res://Main/jogo.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://0anneftyq84r"
 
 [audio]
 
 driver/enable_input=true
 driver/mix_rate=48000
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

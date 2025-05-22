@@ -1,6 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkls4hu3uydv"]
+[gd_scene load_steps=8 format=3 uid="uid://bkls4hu3uydv"]
 
 [ext_resource type="Script" uid="uid://dxlwa67ayibd2" path="res://Main/Player/Bola.gd" id="1_nnytf"]
+[ext_resource type="Texture2D" uid="uid://cbejpi7662wtb" path="res://Material/Ball/13772454-bola-de-fundo-de-futebol-de-textura-panoramica-preto-e-branco-vetor.jpg" id="2_5x67o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wc12"]
+albedo_texture = ExtResource("2_5x67o")
+uv1_scale = Vector3(0.29, 0.36, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_fnv2s"]
 
@@ -22,6 +27,7 @@ collision_mask = 7
 script = ExtResource("1_nnytf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_4wc12")
 mesh = SubResource("SphereMesh_fnv2s")
 surface_material_override/0 = SubResource("StandardMaterial3D_8gore")
 
