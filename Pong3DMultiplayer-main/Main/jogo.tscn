@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://dfgj0lwfe2elm"]
+[gd_scene load_steps=87 format=3 uid="uid://dfgj0lwfe2elm"]
 
 [ext_resource type="Script" uid="uid://cjk678ialsi3u" path="res://Main/jogo.gd" id="1_pukle"]
 [ext_resource type="PackedScene" uid="uid://ckxjoth8tom2t" path="res://Main/Player/player.tscn" id="1_wq4xo"]
@@ -107,7 +107,7 @@ shadow_size = 43
 shadow_color = Color(0.862745, 0.858824, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6sof"]
-bg_color = Color(0.962123, 0.904164, 0, 1)
+bg_color = Color(1, 0.913725, 0, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -124,7 +124,7 @@ bg_color = Color(1, 0.913725, 0.196078, 1)
 bg_color = Color(1, 0.913725, 0.196078, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euai0"]
-bg_color = Color(1, 0.937255, 0.0784314, 1)
+bg_color = Color(1, 0.913725, 0, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -133,8 +133,6 @@ border_color = Color(0.873019, 0.795829, 0, 1)
 border_blend = true
 shadow_color = Color(1, 0.913725, 0.0823529, 1)
 shadow_size = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph6p4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0dro"]
 bg_color = Color(1, 0.913725, 0, 1)
@@ -159,10 +157,10 @@ shadow_size = 5
 bg_color = Color(1, 0.913725, 0.196078, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jwb7"]
-bg_color = Color(1, 0.913725, 0.196078, 1)
+bg_color = Color(1, 0.913725, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e8a2"]
-bg_color = Color(1, 0.937255, 0.0784314, 1)
+bg_color = Color(1, 0.913725, 0, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -417,6 +415,7 @@ shape = SubResource("WorldBoundaryShape3D_y3225")
 
 [node name="Bola" parent="." node_paths=PackedStringArray("sfx_player") instance=ExtResource("2_h4ylc")]
 visible = false
+fator_de_aumento_da_velocidade = 0.1
 sfx_player = NodePath("../AudioNodes/SFX")
 
 [node name="GolPlayer1" type="Area3D" parent="."]
@@ -577,7 +576,6 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_p6sof")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_ujbn8")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_2n1wh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_euai0")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ph6p4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_b0dro")
 text = "Local"
 
@@ -655,6 +653,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_v2dkt")
 text = "V1.1"
 
 [node name="Login" type="MarginContainer" parent="Telas" node_paths=PackedStringArray("ip", "port", "nickname")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

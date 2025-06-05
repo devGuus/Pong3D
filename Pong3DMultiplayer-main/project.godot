@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Pong3D"
+config/name="PowerPong3D"
 run/main_scene="res://Main/jogo.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="uid://0anneftyq84r"
+config/icon="uid://mnu5atcuaj8b"
 
 [audio]
 
